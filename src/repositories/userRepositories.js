@@ -10,6 +10,16 @@ async function create({ name, email, password, phone, cpf }) {
   );
 }
 
+async function findByEmail(email) {
+  return await db.query(
+    `    
+    SELECT * FROM users WHERE email=$1
+  `,
+    [email]
+  );
+}
+
 export default{
     create,
+    findByEmail,
 }
